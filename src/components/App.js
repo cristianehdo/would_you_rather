@@ -1,18 +1,34 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import Login from './Login'
+import LoadingBar from 'react-redux-loading'
 
 class App extends Component {
   componentDidMount () {
     this.props.dispatch(handleInitialData())
   }
   render() {
+    console.log(this.props)
     return (
-      <div>
-        APP
-      </div>
+
+      <Fragment>
+        <LoadingBar />
+        <div className='ui container'>
+          {this.props.loading
+            ? null
+            : <Login />
+          }
+        </div>
+      </Fragment>
     )
   }
 }
 
-export default connect()(App)
+function mapStateToProps({ users }) {
+  return {
+    loading: users === null,
+    users
+  }
+}
+export default connect(mapStateToProps)(App)
