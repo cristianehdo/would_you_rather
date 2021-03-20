@@ -2,19 +2,21 @@ import React from 'react'
 import { Form } from 'semantic-ui-react'
 
 const QuestionOptions = props => {
-  const { options } = props
+  const { options, onChange, value } = props
   if (typeof options === 'string') {
     return options
   }
   return (
-    <Form>
-      {options.map((option) => {
+    <Form >
+      {Object.keys(options).map((optionKey) => {
         return <Form.Field
-          key={option}
-          label={option}
+          key={optionKey}
+          label={options[optionKey]}
           control='input'
           type='radio'
           name='optionsRadio'
+          onChange={() => onChange({answer: optionKey})}
+          checked={value === optionKey}
           inline
           />
       })}
