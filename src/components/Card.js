@@ -6,13 +6,14 @@ import QuestionOptions from './QuestionOptions'
 class Card extends Component {
   state = {
     answer: 'optionOne',
-    questionPage: this.props.buttonLable === "submit answer"
+    questionPage: this.props.buttonLabel === "submit answer"
   }
   handleButtonClick = (e) => {
     if (this.state.questionPage) {
-      // set state
-      // call callback
+      // callback to update question on store
+      this.props.onButtonClick(this.state.answer)
     } else {
+      // todo
       // redirect to question page
     }
   }
