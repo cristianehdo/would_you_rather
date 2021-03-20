@@ -7,10 +7,9 @@ The "Would You Rather?" Project is a web app that lets a user play the “Would 
 # How to start
 
 Run:
-
 `npm install
  npm start
-`````
+`
 # More information
 
 In order to play the game the user need to login. To log in the user will need to select a name from the list of existing users. After that the user is be able to answer questions, see which questions they haven’t answered, see how other people have voted, post questions, and see the ranking of users on the leaderboard.
