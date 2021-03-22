@@ -9,6 +9,7 @@ import Question from './Question'
 import PrivateRoute from './PrivateRoute'
 import NewQuestion from './NewQuestion'
 import { createBrowserHistory } from 'history'
+import Nav from './Nav'
 
 const newHistory = createBrowserHistory();
 
@@ -25,6 +26,7 @@ class App extends Component {
           {this.props.loading
             ? null
             : <div className='ui raised very padded text container segment'>
+              <Nav />
                 <Switch>
                   <Route path="/" exact component={Login} />
                   <Route path="/login" exact component={Login} />
