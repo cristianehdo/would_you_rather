@@ -12,8 +12,8 @@ class Login extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.dispatch(setAuthedUser(e.target.id))
-    // redirect to game page
+    this.props.dispatch(setAuthedUser(this.state.user));
+    return this.props.history.push('/home')
   }
   render () {
     return (
