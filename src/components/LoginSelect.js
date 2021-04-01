@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Dropdown } from 'semantic-ui-react'
 
 const LoginSelect = (props) => {
@@ -26,4 +27,9 @@ const LoginSelect = (props) => {
   )
 }
 
+LoginSelect.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  users: PropTypes.object,
+}
 export default LoginSelect
