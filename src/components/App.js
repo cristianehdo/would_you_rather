@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import { Router, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types'
+import { Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
@@ -11,7 +12,7 @@ import NewQuestion from './NewQuestion'
 import { createBrowserHistory } from 'history'
 import Nav from './Nav'
 
-const newHistory = createBrowserHistory();
+const newHistory = createBrowserHistory()
 
 
 class App extends Component {
@@ -27,19 +28,24 @@ class App extends Component {
             ? null
             : <div className='ui raised very padded text container segment'>
               <Nav />
-                <Switch>
-                  <Route path="/" exact component={Login} />
-                  <Route path="/login" exact component={Login} />
-                  <PrivateRoute path="/home" exact component={HomePage} />
-                  <PrivateRoute path="/questions/new" exact component={NewQuestion} />
-                  <PrivateRoute path="/questions/:id" exact component={Question} />
-                </Switch>
-              </div>
+              <Switch>
+                <Route path="/" exact component={Login} />
+                <Route path="/login" exact component={Login} />
+                <PrivateRoute path="/home" exact component={HomePage} />
+                <PrivateRoute path="/questions/new" exact component={NewQuestion} />
+                <PrivateRoute path="/questions/:id" exact component={Question} />
+              </Switch>
+            </div>
           }
         </Fragment>
       </Router>
     )
   }
+}
+
+App.propTypes = {
+  dispatch: PropTypes.func,
+  loading: PropTypes.boolean
 }
 
 function mapStateToProps({ users }) {
