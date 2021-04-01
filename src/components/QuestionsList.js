@@ -26,5 +26,5 @@ QuestionsList.propTypes = {
   questionsIds: PropTypes.array,
   users: PropTypes.object,
   questions: PropTypes.object,
-};
+}
 export default QuestionsList

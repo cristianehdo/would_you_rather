@@ -27,5 +27,5 @@ Tab.propTypes = {
   questions: PropTypes.object,
   tabs: PropTypes.object,
   users: PropTypes.object,
-};
+}
 export default Tab
