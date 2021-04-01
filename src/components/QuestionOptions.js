@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Form } from 'semantic-ui-react'
 
 const QuestionOptions = props => {
@@ -18,10 +19,15 @@ const QuestionOptions = props => {
           onChange={() => onChange({answer: optionKey})}
           checked={value === optionKey}
           inline
-          />
+        />
       })}
     </Form>
   )
 }
 
+QuestionOptions.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  options: PropTypes.object,
+}
 export default QuestionOptions
