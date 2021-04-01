@@ -17,7 +17,7 @@ export function handleInitialData () {
 }
 
 export function handleAnswerQuestion ({qid, authedUser, answer}) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(showLoading())
 
     return saveQuestionAnswer({
