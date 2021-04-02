@@ -18,15 +18,15 @@ class Question extends Component {
     return (
       <div className="ui list">
         <div className="item" key={question.id} >
-        <Card
-          avatarSize='small'
-          user={users[question.author]}
-          options={{ optionOne: question.optionOne.text, optionTwo: question.optionTwo.text }}
-          buttonColor='green'
-          buttonLabel="submit answer"
-          onButtonClick={this.handleButtonClick}
-      />
-      </div>
+          <Card
+            avatarSize='small'
+            user={users[question.author]}
+            options={{ optionOne: question.optionOne.text, optionTwo: question.optionTwo.text }}
+            buttonColor='green'
+            buttonLabel="submit answer"
+            onButtonClick={this.handleButtonClick}
+          />
+        </div>
       </div>
     )
   }
@@ -35,8 +35,10 @@ class Question extends Component {
 Question.propTypes = {
   questionsIds: PropTypes.array,
   users: PropTypes.object,
-  questions: PropTypes.object,
-};
+  question: PropTypes.object,
+  dispatch: PropTypes.func,
+  authedUser: PropTypes.string,
+}
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
   authedUser = 'sarahedo' // to be removed
