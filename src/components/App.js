@@ -45,7 +45,7 @@ class App extends Component {
 
 App.propTypes = {
   dispatch: PropTypes.func,
-  loading: PropTypes.boolean
+  loading: PropTypes.bool,
 }
 
 function mapStateToProps({ users }) {
