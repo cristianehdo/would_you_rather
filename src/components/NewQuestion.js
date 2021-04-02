@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Form } from 'semantic-ui-react'
 import { handleAddQuestion } from '../actions/questions'
@@ -52,6 +53,11 @@ class NewQuestion extends Component {
     )
 
   }
+}
+
+NewQuestion.propTypes = {
+  dispatch: PropTypes.func,
+  authedUser: PropTypes.string,
 }
 
 function mapStateToProps({ authedUser }) {
