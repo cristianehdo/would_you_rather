@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 import Tab from './Tab'
 
 class HomePage extends Component {
@@ -36,5 +37,11 @@ function mapPropsToState({ users, authedUser, questions }) {
     questionsIds,
     tabs,
   }
+}
+
+HomePage.propTypes = {
+  questions: PropTypes.object,
+  tabs: PropTypes.object,
+  users: PropTypes.object,
 }
 export default connect(mapPropsToState)(HomePage)
