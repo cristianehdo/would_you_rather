@@ -6,7 +6,7 @@ import QuestionOptions from './QuestionOptions'
 class Card extends Component {
   state = {
     answer: 'optionOne',
-    questionPage: this.props.buttonLabel === "submit answer"
+    questionPage: this.props.buttonLabel === 'submit answer'
   }
   handleButtonClick = (e) => {
     if (this.state.questionPage) {
@@ -31,22 +31,22 @@ class Card extends Component {
             src={user.avatarURL}
           />
           <SemanticCard.Header>{user.name}</SemanticCard.Header>
-            <SemanticCard.Description>
-              <strong>Would you rather...</strong>
-              <QuestionOptions
-                options={options}
-                onChange={this.handleAnswerChanged}
-                value={this.state.answer}
-               />
-            </SemanticCard.Description>
-          </SemanticCard.Content>
-            <SemanticCard.Content extra>
-              <div className='ui bottom attached button'>
-                <Button basic color={buttonColor} onClick={this.handleButtonClick}>
-                  {buttonLabel}
-                </Button>
-              </div>
-          </SemanticCard.Content>
+          <SemanticCard.Description>
+            <strong>Would you rather...</strong>
+            <QuestionOptions
+              options={options}
+              onChange={this.handleAnswerChanged}
+              value={this.state.answer}
+            />
+          </SemanticCard.Description>
+        </SemanticCard.Content>
+        <SemanticCard.Content extra>
+          <div className='ui bottom attached button'>
+            <Button basic color={buttonColor} onClick={this.handleButtonClick}>
+              {buttonLabel}
+            </Button>
+          </div>
+        </SemanticCard.Content>
       </SemanticCard>
     )
   }
@@ -57,5 +57,7 @@ Card.propTypes = {
   buttonColor: PropTypes.string,
   buttonLabel: PropTypes.string,
   user: PropTypes.object,
-};
+  options: PropTypes.object,
+  onButtonClick: PropTypes.func,
+}
 export default Card
