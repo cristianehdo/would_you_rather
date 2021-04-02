@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { removeAuthedUser } from '../actions/authedUser'
@@ -51,36 +52,11 @@ class Nav extends Component {
     )
   }
 }
-// const Nav = (props) => {
-//   if(!props.authedUser) {
-//     return <div />
-//   }
-//   return (
-//     <nav className='nav'>
-//       <ul>
-//         <li>
-//           <NavLink to='/home' exact activeClassName='active'>
-//             Home
-//           </NavLink>
-//         </li>
-//         <li>
-//           <NavLink to='/questions/new' activeClassName='active'>
-//             New Question
-//           </NavLink>
-//         </li>
-//         <li>
-//           <NavLink
-//             to='/questions/new'
-//             activeClassName='active'
-//             onClick={() => props.dispatch(removeAuthedUser())}>
-//              Log out
-//           </NavLink>
-//         </li>
-//       </ul>
-//     </nav>
-//   )
-// }
 
+Nav.propTypes = {
+  dispatch: PropTypes.func,
+  authedUser: PropTypes.string,
+}
 function mapStateToProps({ authedUser }) {
   return {
     authedUser
