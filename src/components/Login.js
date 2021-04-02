@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import LoginSelect from './LoginSelect'
 import { setAuthedUser } from '../actions/authedUser'
@@ -12,7 +13,7 @@ class Login extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.dispatch(setAuthedUser(this.state.user));
+    this.props.dispatch(setAuthedUser(this.state.user))
     return this.props.history.push('/home')
   }
   render () {
@@ -40,6 +41,11 @@ class Login extends Component {
 }
 
 
+Login.propTypes = {
+  users: PropTypes.object,
+  dispatch: PropTypes.func,
+  history: PropTypes.array
+}
 function mapPropsToState({ users }) {
   return { users }
 }
