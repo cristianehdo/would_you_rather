@@ -19,7 +19,7 @@ class Nav extends Component {
 
   render() {
     if(!this.props.authedUser) {
-      return <div />
+      return null
     }
     const { activeItem } = this.state
 
