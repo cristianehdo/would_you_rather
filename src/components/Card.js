@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Redirect } from 'react-router-dom'
 import { Button, Card as SemanticCard, Image } from 'semantic-ui-react'
 import QuestionOptions from './QuestionOptions'
 
 class Card extends Component {
   state = {
     answer: 'optionOne',
-    questionPage: this.props.buttonLabel === 'submit answer'
+    questionPage: this.props.tabName === 'unansweredQuestions'
   }
   handleButtonClick = () => {
     if (this.state.questionPage) {
-      // callback to update question on store
-      this.props.onButtonClick(this.state.answer)
+      <Redirect to={`/questions/{this.props.questionId}`} />
     } else {
+      console.log("nops")
       // todo
       // redirect to question page
     }
@@ -21,7 +22,7 @@ class Card extends Component {
     this.setState(answer)
   }
   render() {
-    const { avatarSize, user, options, buttonColor, buttonLabel  } = this.props
+    const { avatarSize, user, options, buttonColor  } = this.props
     return (
       <SemanticCard>
         <SemanticCard.Content>
@@ -43,7 +44,7 @@ class Card extends Component {
         <SemanticCard.Content extra>
           <div className='ui bottom attached button'>
             <Button basic color={buttonColor} onClick={this.handleButtonClick}>
-              {buttonLabel}
+              View Poll
             </Button>
           </div>
         </SemanticCard.Content>
@@ -55,7 +56,8 @@ class Card extends Component {
 Card.propTypes = {
   avatarSize: PropTypes.string,
   buttonColor: PropTypes.string,
-  buttonLabel: PropTypes.string,
+  tabName: PropTypes.string,
+  questionId: PropTypes.string,
   user: PropTypes.object,
   options: PropTypes.oneOfType([
     PropTypes.string,
