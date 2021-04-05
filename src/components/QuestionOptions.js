@@ -28,6 +28,9 @@ const QuestionOptions = props => {
 QuestionOptions.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
-  options: PropTypes.object,
+  options: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
 }
 export default QuestionOptions
