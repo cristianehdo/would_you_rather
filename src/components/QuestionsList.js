@@ -15,6 +15,7 @@ const QuestionsList = props => {
             options='be a...'
             buttonColor='green'
             tabName={tabName}
+            questionId={questionId}
           />
         </div>
       })}
