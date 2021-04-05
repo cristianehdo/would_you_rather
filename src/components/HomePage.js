@@ -6,11 +6,7 @@ import Tab from './Tab'
 class HomePage extends Component {
   render () {
     const { tabs, users, questions } = this.props
-    return(
-      <div>
-        <Tab tabs={tabs} users={users} questions={questions} />
-      </div>
-    )
+    return <Tab tabs={tabs} users={users} questions={questions} />
   }
 }
 
