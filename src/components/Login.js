@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import LoginSelect from './LoginSelect'
@@ -18,7 +18,7 @@ class Login extends Component {
   }
   render () {
     return (
-      <div>
+      <Fragment>
         <h1>Sign in</h1>
         <form className='ui form' onSubmit={this.handleSubmit}>
           <div className='field'>
@@ -35,7 +35,7 @@ class Login extends Component {
               Sign in
           </button>
         </form>
-      </div>
+      </Fragment>
     )
   }
 }
