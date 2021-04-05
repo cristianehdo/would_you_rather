@@ -62,7 +62,7 @@ NewQuestion.propTypes = {
 
 function mapStateToProps({ authedUser }) {
   return {
-    authedUser: 'sarahedo' // to be removed
+    authedUser
   }
 }
 export default connect(mapStateToProps)(NewQuestion)
