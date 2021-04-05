@@ -8,8 +8,8 @@ class Login extends Component {
   state = {
     user: null
   }
-  handleUserSelected = (e) => {
-    this.setState({ user: e.target.id })
+  handleUserSelected = (_e, { value }) => {
+    this.setState({ user: value })
   }
   handleSubmit = (e) => {
     e.preventDefault()
