@@ -8,7 +8,7 @@ class Card extends Component {
     answer: 'optionOne',
     questionPage: this.props.buttonLabel === 'submit answer'
   }
-  handleButtonClick = (e) => {
+  handleButtonClick = () => {
     if (this.state.questionPage) {
       // callback to update question on store
       this.props.onButtonClick(this.state.answer)
@@ -57,7 +57,10 @@ Card.propTypes = {
   buttonColor: PropTypes.string,
   buttonLabel: PropTypes.string,
   user: PropTypes.object,
-  options: PropTypes.object,
+  options: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
   onButtonClick: PropTypes.func,
 }
 export default Card
