@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Card from './Card'
 
 const QuestionsList = props => {
-  const { questionsIds, users, questions } = props
+  const { questionsIds, users, questions, tabName } = props
   return (
     <div className="ui list">
       {questionsIds.map((questionId) => {
@@ -15,6 +15,7 @@ const QuestionsList = props => {
             options='be a...'
             buttonColor='green'
             buttonLabel="see question"
+            tabName={tabName}
           />
         </div>
       })}
@@ -26,5 +27,6 @@ QuestionsList.propTypes = {
   questionsIds: PropTypes.array,
   users: PropTypes.object,
   questions: PropTypes.object,
+  tabName: PropTypes.string
 }
 export default QuestionsList
