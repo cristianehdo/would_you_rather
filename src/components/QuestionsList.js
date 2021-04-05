@@ -14,7 +14,6 @@ const QuestionsList = props => {
             user={users[question.author]}
             options='be a...'
             buttonColor='green'
-            buttonLabel="see question"
             tabName={tabName}
           />
         </div>
