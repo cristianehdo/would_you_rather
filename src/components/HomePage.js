@@ -23,7 +23,7 @@ function mapPropsToState({ users, authedUser, questions }) {
       title: 'Unanswered questions',
     }
   }
-  tabs.unasweredQuestions.questions = questionsIds.filter((questionId) => {
+  tabs.unansweredQuestions.questions = questionsIds.filter((questionId) => {
     return !answeredQuestions.includes(questionId)
   })
   return {

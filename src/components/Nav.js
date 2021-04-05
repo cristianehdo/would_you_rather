@@ -43,6 +43,10 @@ class Nav extends Component {
             exact
           />
           <Menu.Item
+            name={`Hello ${this.props.authedUser}!`}
+            active={false}
+          />
+          <Menu.Item
             name='logout'
             active={activeItem === 'logout'}
             onClick={this.handleItemClick}
