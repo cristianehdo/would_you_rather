@@ -44,7 +44,7 @@ class Login extends Component {
 Login.propTypes = {
   users: PropTypes.object,
   dispatch: PropTypes.func,
-  history: PropTypes.array
+  history: PropTypes.object
 }
 function mapPropsToState({ users }) {
   return { users }
