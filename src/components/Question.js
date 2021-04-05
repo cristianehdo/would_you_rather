@@ -41,7 +41,6 @@ Question.propTypes = {
 }
 
 function mapStateToProps({ authedUser, users, questions }, { id }) {
-  authedUser = 'sarahedo' // to be removed
   const question = questions[id]
   return {
     authedUser,

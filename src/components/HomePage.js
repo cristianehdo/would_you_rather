@@ -11,7 +11,6 @@ class HomePage extends Component {
 }
 
 function mapPropsToState({ users, authedUser, questions }) {
-  authedUser = 'sarahedo' // to be removed
   const questionsIds = Object.keys(questions)
   const answeredQuestions = Object.keys(users[authedUser].answers)
   const tabs = {
