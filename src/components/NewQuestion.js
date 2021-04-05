@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Button, Form } from 'semantic-ui-react'
@@ -22,7 +22,7 @@ class NewQuestion extends Component {
   }
   render () {
     return (
-      <div>
+      <Fragment>
         <h1 className="ui center aligned header">Create a Question</h1>
         <Form onSubmit={this.handleSubmit}>
           <h3>Would you rather... </h3>
@@ -49,7 +49,7 @@ class NewQuestion extends Component {
             Submit
           </Button>
         </Form>
-      </div>
+      </Fragment>
     )
 
   }
