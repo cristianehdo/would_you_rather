@@ -21,7 +21,12 @@ const Tab = props => {
       ),
     }
   })
-  return <SemanticTab panes={panes} renderActiveOnly={false}  />
+  return (
+    <SemanticTab
+      panes={panes}
+      renderActiveOnly={false}
+      style={{width: '328px', margin: '0 auto'}}/>
+  )
 }
 
 Tab.propTypes = {
