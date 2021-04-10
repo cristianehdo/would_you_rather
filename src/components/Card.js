@@ -30,7 +30,7 @@ class Card extends Component {
           />
           <SemanticCard.Header>{user.name}</SemanticCard.Header>
           <SemanticCard.Description>
-            <strong>Would you rather...</strong>
+            <p><strong>Would you rather...</strong></p>
             <QuestionOptions
               options={options}
               onChange={this.handleAnswerChanged}
