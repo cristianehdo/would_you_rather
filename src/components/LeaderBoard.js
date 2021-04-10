@@ -7,12 +7,11 @@ const LeaderBoard = ({users, usersIds}) => {
   return(
     usersIds.map((id)=> {
       const user = users[id]
-      console.log(user, 'user')
       return <UserCard
         name={user.name}
         avatarURL={user.avatarURL}
-        answers={Object.keys(user.answers).length}
-        questions={user.questions?.length}
+        answers={user.answersCount}
+        questions={user.questionCount}
         key={user.id}/>
     })
   )
@@ -24,9 +23,20 @@ LeaderBoard.propTypes = {
 }
 
 function mapStateToProps({ users }) {
+  const usersBoard = {}
+  Object.keys(users).map((id)=>{
+    const user = users[id]
+    user.answersCount = Object.keys(user.answers).length
+    user.questionCount = user.questions?.length || 0
+    usersBoard[id]= user
+  })
+  const usersIds = Object.keys(users).sort((a, b)=>{
+    return (usersBoard[b].answersCount + usersBoard[b].questionCount) -
+      (usersBoard[a].answersCount + usersBoard[a].questionCount)
+  })
   return {
-    users,
-    usersIds: Object.keys(users)
+    users: usersBoard,
+    usersIds
   }
 }
 export default connect(mapStateToProps)(LeaderBoard)
