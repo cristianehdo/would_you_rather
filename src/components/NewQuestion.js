@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { Button, Form } from 'semantic-ui-react'
 import { handleAddQuestion } from '../actions/questions'
 
@@ -11,11 +12,12 @@ class NewQuestion extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    const { authedUser, dispatch } = this.props
+    const { authedUser, dispatch, history } = this.props
     dispatch(handleAddQuestion({
       author: authedUser,
       ...this.state
     }))
+    return history.push('/home')
   }
   handleInputChange = (e) => {
     this.setState({[e.target.id]: e.target.value})
@@ -58,6 +60,7 @@ class NewQuestion extends Component {
 NewQuestion.propTypes = {
   dispatch: PropTypes.func,
   authedUser: PropTypes.string,
+  history: PropTypes.object,
 }
 
 function mapStateToProps({ authedUser }) {
@@ -65,4 +68,4 @@ function mapStateToProps({ authedUser }) {
     authedUser
   }
 }
-export default connect(mapStateToProps)(NewQuestion)
+export default withRouter(connect(mapStateToProps)(NewQuestion))
