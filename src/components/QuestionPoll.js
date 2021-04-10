@@ -2,15 +2,18 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Card as SemanticCard, Divider, Grid, Image, Segment } from 'semantic-ui-react'
+import { Card as SemanticCard, Divider, Grid, Image, Segment, Progress } from 'semantic-ui-react'
 
 class QuestionPoll extends Component {
   render () {
-    const { users, questions, match } = this.props
+    const { users, questions, match, authedUser } = this.props
     const question = questions[match.params.id]
     const author = users[question.author]
     const optionOneCount = question.optionOne.votes.length
     const optionTwoCount = question.optionTwo.votes.length
+    const total = optionOneCount + optionTwoCount
+    const optionOneVote = question.optionOne.votes.includes(authedUser)
+    const optionTwoVote = question.optionTwo.votes.includes(authedUser)
     return (
       <SemanticCard style={{width:'100%'}}>
         <SemanticCard.Content header={`Asked by ${author.name}`} />
@@ -27,9 +30,22 @@ class QuestionPoll extends Component {
               <Grid.Column>
                 Resuts:
                 <Segment>
-                  {question.optionOne.text}: {optionOneCount}
+                  <div>
+                    {question.optionOne.text}:
+                    {optionOneVote
+                      ?<div className="ui teal right ribbon label">Your Answer</div>
+                      : null
+                    }
+                    <Progress value={optionOneCount} total={total} progress='ratio' />
+                  </div>
                   <Divider section />
-                  {question.optionTwo.text}: {optionTwoCount}
+                  {question.optionTwo.text}:
+                  {optionTwoVote
+                    ?<div className="ui teal right ribbon label">Your Answer</div>
+                    : null
+                  }
+                  <Progress value={optionTwoCount} total={total} progress='ratio' />
+
                 </Segment>
               </Grid.Column>
             </Grid>
