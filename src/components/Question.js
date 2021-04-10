@@ -19,18 +19,16 @@ class Question extends Component {
     const { questions, users, match } = this.props
     const question = questions[match.params.id]
     return (
-      <div className="ui list">
-        <div className="item" key={question.id} >
-          <Card
-            avatarSize='small'
-            user={users[question.author]}
-            options={{ optionOne: question.optionOne.text, optionTwo: question.optionTwo.text }}
-            buttonColor='green'
-            buttonLabel="submit answer"
-            onButtonClick={this.handleButtonClick}
-            questionId={question.id}
-          />
-        </div>
+      <div key={question.id} style={{display: 'flex', justifyContent: 'center'}} >
+        <Card
+          avatarSize='small'
+          user={users[question.author]}
+          options={{ optionOne: question.optionOne.text, optionTwo: question.optionTwo.text }}
+          buttonColor='green'
+          buttonLabel="submit answer"
+          onButtonClick={this.handleButtonClick}
+          questionId={question.id}
+        />
       </div>
     )
   }
