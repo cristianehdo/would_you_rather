@@ -20,7 +20,7 @@ const QuestionsList = props => {
           <Card
             avatarSize='tiny'
             user={users[question.author]}
-            options='be a...'
+            options={`${question.optionOne.text.substring(0,8)}...`}
             buttonColor='green'
             tabName={tabName}
             questionId={questionId}

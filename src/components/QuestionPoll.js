@@ -37,7 +37,11 @@ class QuestionPoll extends Component {
                     ?<div className="ui teal right ribbon label">Your Answer</div>
                     : null
                   }
-                  <Progress value={optionOneCount} total={total} progress='ratio' />
+                  <Progress
+                    value={optionOneCount}
+                    total={total}
+                    progress='ratio'
+                    style={{marginTop:'10px'}}/>
                 </Segment>
                 <Segment>
                   <div style={{fontWeight: 800}}>
@@ -47,8 +51,11 @@ class QuestionPoll extends Component {
                     ?<div className="ui teal right ribbon label">Your Answer</div>
                     : null
                   }
-                  <Progress value={optionTwoCount} total={total} progress='ratio' />
-
+                  <Progress
+                    value={optionTwoCount}
+                    total={total}
+                    progress='ratio'
+                    style={{marginTop:'10px'}}/>
                 </Segment>
               </Grid.Column>
             </Grid>
