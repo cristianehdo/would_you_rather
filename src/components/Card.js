@@ -1,28 +1,25 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
 import { Button, Card as SemanticCard, Image } from 'semantic-ui-react'
 import QuestionOptions from './QuestionOptions'
 
 class Card extends Component {
   state = {
     answer: 'optionOne',
-    questionPage: this.props.tabName === 'unansweredQuestions'
-  }
-  handleButtonClick = () => {
-    if (this.state.questionPage) {
-      return this.props.history.push(`/questions/${this.props.questionId}`)
-    } else {
-      console.log("nops")
-      // todo
-      // redirect to view poll
-    }
   }
   handleAnswerChanged = (answer) => {
     this.setState(answer)
   }
   render() {
-    const { avatarSize, user, options, buttonColor  } = this.props
+    const {
+      avatarSize,
+      user,
+      options,
+      buttonColor,
+      onButtonClick,
+      questionId,
+      buttonLabel
+    } = this.props
     return (
       <SemanticCard>
         <SemanticCard.Content>
@@ -43,8 +40,11 @@ class Card extends Component {
         </SemanticCard.Content>
         <SemanticCard.Content extra>
           <div className='ui bottom attached button'>
-            <Button basic color={buttonColor} onClick={this.handleButtonClick}>
-              View Poll
+            <Button
+              basic
+              color={buttonColor}
+              onClick={()=> onButtonClick(this.state.answer, questionId )}>
+              {buttonLabel}
             </Button>
           </div>
         </SemanticCard.Content>
@@ -56,14 +56,14 @@ class Card extends Component {
 Card.propTypes = {
   avatarSize: PropTypes.string,
   buttonColor: PropTypes.string,
+  buttonLabel: PropTypes.string,
   tabName: PropTypes.string,
   questionId: PropTypes.string,
   user: PropTypes.object,
-  history: PropTypes.object,
   options: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
   ]),
   onButtonClick: PropTypes.func,
 }
-export default withRouter(Card)
+export default Card
