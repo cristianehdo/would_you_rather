@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { removeAuthedUser } from '../actions/authedUser'
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment, Image } from 'semantic-ui-react'
 
 class Nav extends Component {
   state = { activeItem: 'home' }
@@ -22,6 +22,7 @@ class Nav extends Component {
       return null
     }
     const { activeItem } = this.state
+    const { user } = this.props
 
     return (
       <Segment inverted>
@@ -43,9 +44,16 @@ class Nav extends Component {
             exact
           />
           <Menu.Item
-            name={`Hello ${this.props.authedUser}!`}
+            name={`Hello ${user.name}!`}
             active={false}
           />
+          <Menu.Item>
+            <Image
+              circular
+              size='mini'
+              src={user.avatarURL}
+            />
+          </Menu.Item>
           <Menu.Item
             name='logout'
             active={activeItem === 'logout'}
@@ -60,10 +68,13 @@ class Nav extends Component {
 Nav.propTypes = {
   dispatch: PropTypes.func,
   authedUser: PropTypes.string,
+  user: PropTypes.object,
 }
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
+  const user= users[authedUser]
   return {
-    authedUser
+    authedUser,
+    user
   }
 }
 export default connect(mapStateToProps)(Nav)
