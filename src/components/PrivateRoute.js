@@ -15,7 +15,7 @@ function PrivateRoute({ isSignedIn, component: Component, ...rest }) {
 }
 
 PrivateRoute.propTypes = {
-  component: PropTypes.object,
+  component: PropTypes.oneOfType([PropTypes.component, PropTypes.func]),
   isSignedIn: PropTypes.bool,
   location: PropTypes.object,
 }
