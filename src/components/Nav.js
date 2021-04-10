@@ -44,6 +44,14 @@ class Nav extends Component {
             exact
           />
           <Menu.Item
+            name='leaderBoard'
+            active={activeItem === 'leaderBoard'}
+            onClick={this.handleItemClick}
+            as={NavLink}
+            to='/leader_board'
+            exact
+          />
+          <Menu.Item
             name={`Hello ${user.name}!`}
             active={false}
           />
