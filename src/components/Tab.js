@@ -15,6 +15,7 @@ const Tab = props => {
             questions={questions}
             users={users}
             questionsIds={tabs[tabKey].questions}
+            tabName={tabKey}
           />
         </SemanticTab.Pane>
       ),
