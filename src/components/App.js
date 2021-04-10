@@ -11,6 +11,7 @@ import PrivateRoute from './PrivateRoute'
 import NewQuestion from './NewQuestion'
 import { createBrowserHistory } from 'history'
 import Nav from './Nav'
+import QuestionPoll from './QuestionPoll'
 
 const newHistory = createBrowserHistory()
 
@@ -34,6 +35,7 @@ class App extends Component {
                 <PrivateRoute path="/home" exact component={HomePage} />
                 <PrivateRoute path="/questions/new" exact component={NewQuestion} />
                 <PrivateRoute path="/questions/:id" exact component={Question} />
+                <PrivateRoute path="/questions/:id/poll" exact component={QuestionPoll} />
               </Switch>
             </div>
           }
