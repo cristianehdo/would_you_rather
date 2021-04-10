@@ -18,7 +18,7 @@ const QuestionsList = props => {
         const question = questions[questionId]
         return <div className="item" key={questionId} >
           <Card
-            avatarSize='tiny'
+            avatarSize='mini'
             user={users[question.author]}
             options={`${question.optionOne.text.substring(0,8)}...`}
             buttonColor='green'
