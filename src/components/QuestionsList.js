@@ -9,10 +9,7 @@ const QuestionsList = props => {
     if (tabName === 'unansweredQuestions') {
       return history.push(`/questions/${questionId}`)
     } else {
-      console.log('nops')
-      // todo
-      // dispatch answer
-      // redirect to view poll
+      return history.push(`/questions/${questionId}/poll`)
     }
   }
   return (
