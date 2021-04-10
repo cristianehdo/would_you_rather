@@ -28,18 +28,21 @@ class QuestionPoll extends Component {
                 />
               </Grid.Column>
               <Grid.Column>
-                Resuts:
+                Results:
                 <Segment>
-                  <div>
+                  <div style={{fontWeight: 800}}>
                     {question.optionOne.text}:
-                    {optionOneVote
-                      ?<div className="ui teal right ribbon label">Your Answer</div>
-                      : null
-                    }
-                    <Progress value={optionOneCount} total={total} progress='ratio' />
                   </div>
-                  <Divider section />
-                  {question.optionTwo.text}:
+                  {optionOneVote
+                    ?<div className="ui teal right ribbon label">Your Answer</div>
+                    : null
+                  }
+                  <Progress value={optionOneCount} total={total} progress='ratio' />
+                </Segment>
+                <Segment>
+                  <div style={{fontWeight: 800}}>
+                    {question.optionTwo.text}:
+                  </div>
                   {optionTwoVote
                     ?<div className="ui teal right ribbon label">Your Answer</div>
                     : null
