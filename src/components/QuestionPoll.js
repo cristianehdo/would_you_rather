@@ -22,7 +22,7 @@ class QuestionPoll extends Component {
             <Grid columns={2} relaxed='very'>
               <Grid.Column>
                 <Image
-                  floated='left'
+                  centered
                   size='small'
                   src={author.avatarURL}
                 />
