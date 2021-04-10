@@ -7,12 +7,13 @@ import { handleAnswerQuestion } from '../actions/shared'
 
 class Question extends Component {
   handleButtonClick = (selectedOption, id) => {
-    const { dispatch, authedUser } = this.props
+    const { dispatch, authedUser, history } = this.props
     dispatch(handleAnswerQuestion({
       qid: id,
       answer: selectedOption,
       authedUser
     }))
+    return history.push(`/questions/${id}/poll`)
   }
   render () {
     const { questions, users, match } = this.props
@@ -27,6 +28,7 @@ class Question extends Component {
             buttonColor='green'
             buttonLabel="submit answer"
             onButtonClick={this.handleButtonClick}
+            questionId={question.id}
           />
         </div>
       </div>
@@ -41,6 +43,7 @@ Question.propTypes = {
   match: PropTypes.object,
   dispatch: PropTypes.func,
   authedUser: PropTypes.string,
+  history: PropTypes.object,
 }
 
 function mapStateToProps({ authedUser, users, questions }) {
