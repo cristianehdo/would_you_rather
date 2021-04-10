@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Button, Card as SemanticCard, Image } from 'semantic-ui-react'
 import QuestionOptions from './QuestionOptions'
 
@@ -11,11 +11,11 @@ class Card extends Component {
   }
   handleButtonClick = () => {
     if (this.state.questionPage) {
-      <Redirect to={`/questions/{this.props.questionId}`} />
+      return this.props.history.push(`/questions/${this.props.questionId}`)
     } else {
       console.log("nops")
       // todo
-      // redirect to question page
+      // redirect to view poll
     }
   }
   handleAnswerChanged = (answer) => {
@@ -59,10 +59,11 @@ Card.propTypes = {
   tabName: PropTypes.string,
   questionId: PropTypes.string,
   user: PropTypes.object,
+  history: PropTypes.object,
   options: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.object
   ]),
   onButtonClick: PropTypes.func,
 }
-export default Card
+export default withRouter(Card)
