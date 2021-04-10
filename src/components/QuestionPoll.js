@@ -23,7 +23,7 @@ class QuestionPoll extends Component {
               <Grid.Column>
                 <Image
                   centered
-                  size='small'
+                  size='medium'
                   src={author.avatarURL}
                 />
               </Grid.Column>

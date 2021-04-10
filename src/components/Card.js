@@ -27,8 +27,10 @@ class Card extends Component {
             floated='left'
             size={avatarSize}
             src={user.avatarURL}
+            circular
           />
           <SemanticCard.Header>{user.name}</SemanticCard.Header>
+          <SemanticCard.Meta>author</SemanticCard.Meta>
           <SemanticCard.Description>
             <p><strong>Would you rather...</strong></p>
             <QuestionOptions
