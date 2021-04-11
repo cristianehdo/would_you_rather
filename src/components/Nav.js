@@ -40,7 +40,7 @@ class Nav extends Component {
             active={activeItem === 'newQuestion'}
             onClick={this.handleItemClick}
             as={NavLink}
-            to='/questions/new'
+            to='/add'
             exact
           />
           <Menu.Item
