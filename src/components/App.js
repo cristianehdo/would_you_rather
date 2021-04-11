@@ -32,10 +32,8 @@ class App extends Component {
             : <div className='ui raised very padded container segment'>
               <Nav />
               <Switch>
-                <Route path="/" exact component={Login} />
-                <Route path="/login" exact component={Login} />
+                <Route path="/" exact component={this.props.authedUser ? HomePage : Login} />
                 <Route path="/notfound" exact component={NotFound} />
-                <PrivateRoute path="/home" exact component={HomePage} />
                 <PrivateRoute path="/add" exact component={NewQuestion} />
                 <PrivateRoute path="/questions/:id" exact component={Question} />
                 <PrivateRoute path="/questions/:id/poll" exact component={QuestionPoll} />
@@ -53,12 +51,13 @@ class App extends Component {
 App.propTypes = {
   dispatch: PropTypes.func,
   loading: PropTypes.bool,
+  authedUser: PropTypes.string,
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ users,authedUser }) {
   return {
     loading: users === null,
-    users
+    authedUser
   }
 }
 export default connect(mapStateToProps)(App)
