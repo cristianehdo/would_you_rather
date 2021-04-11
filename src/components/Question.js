@@ -7,17 +7,15 @@ import { handleAnswerQuestion } from '../actions/shared'
 
 class Question extends Component {
   handleButtonClick = (selectedOption, id) => {
-    const { dispatch, authedUser, history } = this.props
+    const { dispatch, authedUser } = this.props
     dispatch(handleAnswerQuestion({
       qid: id,
       answer: selectedOption,
       authedUser
     }))
-    return history.push(`/questions/${id}/poll`)
   }
   render () {
-    const { questions, users, match } = this.props
-    const question = questions[match.params.id]
+    const { question, users } = this.props
     return (
       <div key={question.id} style={{display: 'flex', justifyContent: 'center'}} >
         <Card
@@ -35,19 +33,16 @@ class Question extends Component {
 }
 
 Question.propTypes = {
-  questionsIds: PropTypes.array,
   users: PropTypes.object,
-  questions: PropTypes.object,
-  match: PropTypes.object,
+  question: PropTypes.object,
   dispatch: PropTypes.func,
   authedUser: PropTypes.string,
-  history: PropTypes.object,
 }
 
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ authedUser, users, questions }, {id}) {
   return {
     authedUser,
-    questions,
+    question: questions[id],
     users
   }
 }
