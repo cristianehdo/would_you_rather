@@ -7,18 +7,13 @@ The "Would You Rather?" Project is a web app that lets a user play the “Would 
 # How to start
 
 Run:
-`npm install
- npm start
-`
+```shell
+yarn start
+yarn install
+```
 # More information
 
 In order to play the game the user need to login. To log in the user will need to select a name from the list of existing users. After that the user is be able to answer questions, see which questions they haven’t answered, see how other people have voted, post questions, and see the ranking of users on the leaderboard.
-
-# What you get
-
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
-
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
 
 ## Data
 
@@ -108,3 +103,8 @@ Your code will talk to the database via 4 methods:
 | authedUser | String | The id of the user who answered the question|
 | qid | String | The id of the question that was answered|
 | answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
+
+
+# Credit
+
+This app is powered by [Semantic UI](https://semantic-ui.com/)
