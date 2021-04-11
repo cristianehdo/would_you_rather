@@ -48,7 +48,7 @@ class Nav extends Component {
             active={activeItem === 'leaderBoard'}
             onClick={this.handleItemClick}
             as={NavLink}
-            to='/leader_board'
+            to='/leaderboard'
             exact
           />
           <Menu.Item

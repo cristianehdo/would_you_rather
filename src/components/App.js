@@ -37,7 +37,7 @@ class App extends Component {
                 <PrivateRoute path="/questions/new" exact component={NewQuestion} />
                 <PrivateRoute path="/questions/:id" exact component={Question} />
                 <PrivateRoute path="/questions/:id/poll" exact component={QuestionPoll} />
-                <PrivateRoute path="/leader_board" exact component={LeaderBoard} />
+                <PrivateRoute path="/leaderboard" exact component={LeaderBoard} />
               </Switch>
             </div>
           }
