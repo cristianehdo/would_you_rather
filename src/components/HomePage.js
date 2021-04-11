@@ -11,7 +11,11 @@ class HomePage extends Component {
 }
 
 function mapPropsToState({ users, authedUser, questions }) {
-  const questionsIds = Object.keys(questions)
+  const questionsIds = Object.keys(questions).sort((a,b)=>{
+    const timeA = questions[a].timestamp
+    const timeB = questions[b].timestamp
+    return timeB - timeA
+  })
   const answeredQuestions = Object.keys(users[authedUser].answers)
   const tabs = {
     unansweredQuestions: {
