@@ -14,13 +14,13 @@ function mapPropsToState({ users, authedUser, questions }) {
   const questionsIds = Object.keys(questions)
   const answeredQuestions = Object.keys(users[authedUser].answers)
   const tabs = {
+    unansweredQuestions: {
+      title: 'Unanswered questions',
+    },
     answeredQuestions: {
       title: 'Answered questions',
       questions: answeredQuestions,
     },
-    unansweredQuestions: {
-      title: 'Unanswered questions',
-    }
   }
   tabs.unansweredQuestions.questions = questionsIds.filter((questionId) => {
     return !answeredQuestions.includes(questionId)

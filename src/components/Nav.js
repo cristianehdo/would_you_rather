@@ -63,6 +63,7 @@ class Nav extends Component {
             />
           </Menu.Item>
           <Menu.Item
+            position='right'
             name='logout'
             active={activeItem === 'logout'}
             onClick={this.handleItemClick}
