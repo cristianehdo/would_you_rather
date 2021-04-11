@@ -6,12 +6,11 @@ import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Login from './Login'
 import HomePage from './HomePage'
-import Question from './Question'
 import PrivateRoute from './PrivateRoute'
 import NewQuestion from './NewQuestion'
 import { createBrowserHistory } from 'history'
 import Nav from './Nav'
-import QuestionPoll from './QuestionPoll'
+import QuestionPage from './QuestionPage'
 import LeaderBoard from './LeaderBoard'
 import NotFound from './NotFound'
 
@@ -35,8 +34,7 @@ class App extends Component {
                 <Route path="/" exact component={this.props.authedUser ? HomePage : Login} />
                 <Route path="/notfound" exact component={NotFound} />
                 <PrivateRoute path="/add" exact component={NewQuestion} />
-                <PrivateRoute path="/questions/:id" exact component={Question} />
-                <PrivateRoute path="/questions/:id/poll" exact component={QuestionPoll} />
+                <PrivateRoute path="/questions/:id" exact component={QuestionPage} />
                 <PrivateRoute path="/leaderboard" exact component={LeaderBoard} />
                 <Redirect to="/notfound" />
               </Switch>
