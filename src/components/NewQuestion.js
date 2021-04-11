@@ -17,7 +17,7 @@ class NewQuestion extends Component {
       author: authedUser,
       ...this.state
     }))
-    return history.push('/home')
+    return history.push('/')
   }
   handleInputChange = (e) => {
     this.setState({[e.target.id]: e.target.value})
