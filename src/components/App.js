@@ -28,7 +28,7 @@ class App extends Component {
           <LoadingBar />
           {this.props.loading
             ? null
-            : <div className='ui raised very padded text container segment'>
+            : <div className='ui raised very padded container segment'>
               <Nav />
               <Switch>
                 <Route path="/" exact component={Login} />
