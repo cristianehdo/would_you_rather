@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Button, Form } from 'semantic-ui-react'
 import { handleAddQuestion } from '../actions/shared'
+import { setActivePage } from '../actions/activePage'
 
 class NewQuestion extends Component {
   state = {
@@ -17,6 +18,7 @@ class NewQuestion extends Component {
       author: authedUser,
       ...this.state
     }))
+    dispatch(setActivePage('home'))
     return history.push('/')
   }
   handleInputChange = (e) => {
