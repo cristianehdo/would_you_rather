@@ -6,8 +6,7 @@ import { Card as SemanticCard, Divider, Grid, Image, Segment, Progress } from 's
 
 class QuestionPoll extends Component {
   render () {
-    const { users, questions, match, authedUser } = this.props
-    const question = questions[match.params.id]
+    const { users, question, authedUser } = this.props
     const author = users[question.author]
     const optionOneCount = question.optionOne.votes.length
     const optionTwoCount = question.optionTwo.votes.length
@@ -69,14 +68,14 @@ class QuestionPoll extends Component {
 
 QuestionPoll.propTypes = {
   users: PropTypes.object,
-  questions: PropTypes.object,
+  question: PropTypes.object,
   match: PropTypes.object,
   authedUser: PropTypes.string,
 }
-function mapStateToProps({ authedUser, users, questions }) {
+function mapStateToProps({ authedUser, users, questions }, { id }) {
   return {
     authedUser,
-    questions,
+    question: questions[id],
     users
   }
 }
