@@ -4,16 +4,16 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { removeAuthedUser } from '../actions/authedUser'
 import { Menu, Segment, Image } from 'semantic-ui-react'
+import { setActivePage } from '../actions/activePage'
 
 class Nav extends Component {
-  state = { activeItem: 'home' }
-
   handleItemClick = (e, { name }) => {
+    const { dispatch } = this.props
     if (name === 'logout') {
-      this.props.dispatch(removeAuthedUser())
-      this.setState({ activeItem: 'home' })
+      dispatch(removeAuthedUser())
+      dispatch(setActivePage('home'))
     } else {
-      this.setState({ activeItem: name })
+      dispatch(setActivePage(name))
     }
   }
 
@@ -21,15 +21,14 @@ class Nav extends Component {
     if(!this.props.authedUser) {
       return null
     }
-    const { activeItem } = this.state
-    const { user } = this.props
+    const { user, activePage } = this.props
 
     return (
       <Segment inverted>
         <Menu inverted secondary>
           <Menu.Item
             name='home'
-            active={activeItem === 'home'}
+            active={activePage === 'home'}
             onClick={this.handleItemClick}
             as={NavLink}
             to='/'
@@ -37,7 +36,7 @@ class Nav extends Component {
           />
           <Menu.Item
             name='newQuestion'
-            active={activeItem === 'newQuestion'}
+            active={activePage === 'newQuestion'}
             onClick={this.handleItemClick}
             as={NavLink}
             to='/add'
@@ -45,7 +44,7 @@ class Nav extends Component {
           />
           <Menu.Item
             name='leaderBoard'
-            active={activeItem === 'leaderBoard'}
+            active={activePage === 'leaderBoard'}
             onClick={this.handleItemClick}
             as={NavLink}
             to='/leaderboard'
@@ -65,7 +64,7 @@ class Nav extends Component {
           <Menu.Item
             position='right'
             name='logout'
-            active={activeItem === 'logout'}
+            active={activePage === 'logout'}
             onClick={this.handleItemClick}
           />
         </Menu>
@@ -78,12 +77,14 @@ Nav.propTypes = {
   dispatch: PropTypes.func,
   authedUser: PropTypes.string,
   user: PropTypes.object,
+  activePage: PropTypes.string
 }
-function mapStateToProps({ authedUser, users }) {
+function mapStateToProps({ authedUser, users, activePage }) {
   const user= users[authedUser]
   return {
     authedUser,
-    user
+    user,
+    activePage,
   }
 }
 export default connect(mapStateToProps)(Nav)
