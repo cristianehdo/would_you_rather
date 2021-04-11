@@ -1,11 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import Card from './Card'
+import { setActivePage } from '../actions/activePage'
 
 const QuestionsList = props => {
   const { questionsIds, users, questions, history } = props
+  const dispatch = useDispatch()
   const handleButtonClick = (_, questionId) => {
+    dispatch(setActivePage(''))
     return history.push(`/questions/${questionId}`)
   }
   return (
