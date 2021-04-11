@@ -32,7 +32,7 @@ class Nav extends Component {
             active={activeItem === 'home'}
             onClick={this.handleItemClick}
             as={NavLink}
-            to='/home'
+            to='/'
             exact
           />
           <Menu.Item
