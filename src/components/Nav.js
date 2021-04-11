@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { removeAuthedUser } from '../actions/authedUser'
 import { Menu, Segment, Image } from 'semantic-ui-react'
@@ -12,6 +12,7 @@ class Nav extends Component {
     if (name === 'logout') {
       dispatch(removeAuthedUser())
       dispatch(setActivePage('home'))
+      return <Redirect to='/' />
     } else {
       dispatch(setActivePage(name))
     }
