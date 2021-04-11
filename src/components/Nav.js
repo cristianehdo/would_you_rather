@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { NavLink, Redirect } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { removeAuthedUser } from '../actions/authedUser'
 import { Menu, Segment, Image } from 'semantic-ui-react'
@@ -8,11 +8,11 @@ import { setActivePage } from '../actions/activePage'
 
 class Nav extends Component {
   handleItemClick = (e, { name }) => {
-    const { dispatch } = this.props
+    const { dispatch, history } = this.props
     if (name === 'logout') {
-      dispatch(removeAuthedUser())
+      history.push('/')
       dispatch(setActivePage('home'))
-      return <Redirect to='/' />
+      dispatch(removeAuthedUser())
     } else {
       dispatch(setActivePage(name))
     }
@@ -78,7 +78,8 @@ Nav.propTypes = {
   dispatch: PropTypes.func,
   authedUser: PropTypes.string,
   user: PropTypes.object,
-  activePage: PropTypes.string
+  activePage: PropTypes.string,
+  history: PropTypes.object,
 }
 function mapStateToProps({ authedUser, users, activePage }) {
   const user= users[authedUser]
@@ -88,4 +89,4 @@ function mapStateToProps({ authedUser, users, activePage }) {
     activePage,
   }
 }
-export default connect(mapStateToProps)(Nav)
+export default withRouter(connect(mapStateToProps)(Nav))
