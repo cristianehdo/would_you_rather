@@ -4,13 +4,9 @@ import { withRouter } from 'react-router-dom'
 import Card from './Card'
 
 const QuestionsList = props => {
-  const { questionsIds, users, questions, tabName, history } = props
+  const { questionsIds, users, questions, history } = props
   const handleButtonClick = (_, questionId) => {
-    if (tabName === 'unansweredQuestions') {
-      return history.push(`/questions/${questionId}`)
-    } else {
-      return history.push(`/questions/${questionId}/poll`)
-    }
+    return history.push(`/questions/${questionId}`)
   }
   return (
     <div className="ui list">
@@ -22,7 +18,6 @@ const QuestionsList = props => {
             user={users[question.author]}
             options={`${question.optionOne.text.substring(0,8)}...`}
             buttonColor='green'
-            tabName={tabName}
             questionId={questionId}
             buttonLabel='View poll'
             onButtonClick={handleButtonClick}
@@ -38,6 +33,5 @@ QuestionsList.propTypes = {
   users: PropTypes.object,
   questions: PropTypes.object,
   history: PropTypes.object,
-  tabName: PropTypes.string
 }
 export default  withRouter(QuestionsList)

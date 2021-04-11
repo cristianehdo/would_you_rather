@@ -59,7 +59,6 @@ Card.propTypes = {
   avatarSize: PropTypes.string,
   buttonColor: PropTypes.string,
   buttonLabel: PropTypes.string,
-  tabName: PropTypes.string,
   questionId: PropTypes.string,
   user: PropTypes.object,
   options: PropTypes.oneOfType([
