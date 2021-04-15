@@ -41,7 +41,7 @@ class QuestionPoll extends Component {
                     total={total}
                     progress='ratio'
                     style={{marginTop:'10px'}}/>
-                  {optionOneCount*100/total}%
+                  {Math.round(optionOneCount*100/total)}%
                 </Segment>
                 <Segment>
                   <div style={{fontWeight: 800}}>
@@ -56,7 +56,7 @@ class QuestionPoll extends Component {
                     total={total}
                     progress='ratio'
                     style={{marginTop:'10px'}}/>
-                  {optionTwoCount*100/total}%
+                  {Math.round(optionTwoCount*100/total)}%
                 </Segment>
               </Grid.Column>
             </Grid>
