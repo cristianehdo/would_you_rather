@@ -4,11 +4,16 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import Question from './Question'
 import QuestionPoll from './QuestionPoll'
+import NotFound from './NotFound'
 
 class QuestionPage extends Component {
   render() {
-    const { match, user } = this.props
+    const { match, user, questions } = this.props
     const qid = match.params.id
+    const question = questions[qid]
+    if(!question) {
+      return <NotFound />
+    }
     const answeredQuestion = !!user.answers[qid]
     return  answeredQuestion
       ? <QuestionPoll id={qid}/>
