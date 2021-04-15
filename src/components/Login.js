@@ -15,7 +15,7 @@ class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.dispatch(setAuthedUser(this.state.user))
-    let { from } = this.props.location.state || { from: { pathname: "/" } }
+    let { from } = this.props.location.state || { from: { pathname: '/' } }
     this.props.history.push(from)
   }
   render () {
