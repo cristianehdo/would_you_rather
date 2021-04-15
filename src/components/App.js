@@ -33,6 +33,7 @@ class App extends Component {
               <Switch>
                 <Route path="/" exact component={this.props.authedUser ? HomePage : Login} />
                 <Route path="/notfound" exact component={NotFound} />
+                <Route path="/login" exact component={Login} />
                 <PrivateRoute path="/add" exact component={NewQuestion} />
                 <PrivateRoute path="/questions/:id" exact component={QuestionPage} />
                 <PrivateRoute path="/leaderboard" exact component={LeaderBoard} />

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import LoginSelect from './LoginSelect'
 import { setAuthedUser } from '../actions/authedUser'
@@ -14,6 +15,8 @@ class Login extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.dispatch(setAuthedUser(this.state.user))
+    let { from } = this.props.location.state || { from: { pathname: "/" } }
+    this.props.history.push(from)
   }
   render () {
     return (
@@ -43,9 +46,10 @@ class Login extends Component {
 Login.propTypes = {
   users: PropTypes.object,
   dispatch: PropTypes.func,
-  history: PropTypes.object
+  history: PropTypes.object,
+  location: PropTypes.object,
 }
 function mapPropsToState({ users }) {
   return { users }
 }
-export default connect(mapPropsToState)(Login)
+export default withRouter(connect(mapPropsToState)(Login))
