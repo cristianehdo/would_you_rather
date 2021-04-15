@@ -9,10 +9,6 @@ const NotFound = () => {
           <div className="label">Error</div>
           <div className="label">Not found</div>
         </div>
-
-        <div className="ui message red inverted">
-          <p>Please log in.</p>
-        </div>
       </div>
     </div>
   )
